@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=2560, height=1440" />
+  <title>PipelineOrchestrator.js — OperonForge</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-family: "Cascadia Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+      font-size: 17px;
+      line-height: 1.5;
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+    }
+
+    .window { display: flex; flex-direction: column; height: 100vh; }
+
+    .titlebar {
+      height: 36px;
+      background: #323233;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 13px;
+      color: #ccc;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .titlebar .dots { display: flex; gap: 7px; margin-right: 10px; }
+    .titlebar .dot { width: 13px; height: 13px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .workspace { display: flex; flex: 1; min-height: 0; }
+
+    .sidebar {
+      width: 260px;
+      background: #252526;
+      border-right: 1px solid #1e1e1e;
+      padding: 14px 0;
+      flex-shrink: 0;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #bbb;
+      padding: 4px 18px 12px;
+    }
+
+    .tree-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 18px 4px 22px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .tree-item.active { background: #37373d; color: #fff; }
+
+    .editor-area { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+    .tabs {
+      display: flex;
+      background: #2d2d2d;
+      height: 38px;
+      align-items: flex-end;
+      padding-left: 10px;
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      background: #1e1e1e;
+      border-top: 2px solid #007acc;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .tab .js-icon { color: #f7df1e; font-weight: bold; font-size: 12px; }
+
+    .breadcrumb {
+      padding: 5px 18px;
+      font-size: 13px;
+      color: #888;
+      background: #1e1e1e;
+      border-bottom: 1px solid #2d2d2d;
+    }
+
+    .editor-scroll {
+      flex: 1;
+      overflow: auto;
+      background: #1e1e1e;
+      scroll-behavior: smooth;
+    }
+
+    .editor { display: flex; padding: 14px 0; min-height: 100%; }
+
+    .line-numbers {
+      text-align: right;
+      padding: 0 18px 0 14px;
+      color: #858585;
+      user-select: none;
+      flex-shrink: 0;
+      min-width: 58px;
+      font-size: 16px;
+    }
+
+    .line-numbers div { height: 25.5px; }
+
+    .code-pane {
+      flex: 1;
+      white-space: pre;
+      padding-right: 32px;
+      font-size: 17px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.15em;
+      background: #aeafad;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .statusbar {
+      height: 26px;
+      background: #007acc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      font-size: 13px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .status-left, .status-right { display: flex; gap: 18px; }
+
+    .kw { color: #569cd6; }
+    .fn { color: #dcdcaa; }
+    .str { color: #ce9178; }
+    .num { color: #b5cea8; }
+    .cmt { color: #6a9955; }
+    .typ { color: #4ec9b0; }
+    .cls { color: #4ec9b0; }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div class="titlebar">
+      <div class="dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      PipelineOrchestrator.js — operonforge — Cursor
+    </div>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-title">Explorer</div>
+        <div class="tree-item"><span>▾</span> OPERONFORGE</div>
+        <div class="tree-item" style="padding-left:36px"><span>▾</span> src</div>
+        <div class="tree-item" style="padding-left:52px"><span>▾</span> core</div>
+        <div class="tree-item active" style="padding-left:68px">📄 PipelineOrchestrator.js</div>
+        <div class="tree-item" style="padding-left:52px"><span>▸</span> components</div>
+      </aside>
+
+      <div class="editor-area">
+        <div class="tabs">
+          <div class="tab"><span class="js-icon">JS</span> PipelineOrchestrator.js</div>
+        </div>
+        <div class="breadcrumb">src › core › PipelineOrchestrator.js</div>
+        <div class="editor-scroll" id="scroll">
+          <div class="editor">
+            <div class="line-numbers" id="lineNums"></div>
+            <div class="code-pane" id="codePane"></div>
+          </div>
+        </div>
+        <div class="statusbar">
+          <div class="status-left">
+            <span>⎇ main</span>
+            <span id="statusMsg">Печатает код…</span>
+          </div>
+          <div class="status-right">
+            <span id="pos">Ln 1, Col 1</span>
+            <span>Spaces: 2</span>
+            <span>UTF-8</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="demo-data.js"></script>
+  <script>
+    const demo = window.__TYPING_DEMO__ ?? {
+      source: '// Запустите: node tools/typing-demo/record.mjs',
+      prefillLength: 0,
+      typing: { charDelayMin: 6, charDelayMax: 14, newlinePauseMin: 20, newlinePauseMax: 45 },
+    }
+
+    const SOURCE = demo.source
+    const PREFILL = SOURCE.slice(0, demo.prefillLength)
+    const TYPE_FROM = demo.prefillLength
+
+    function highlight(line) {
+      if (!line) return ''
+      let html = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+      if (/^\s*\/\//.test(line) || /^\s*\*/.test(line) || /^\s*\/\*\*/.test(line)) {
+        return `<span class="cmt">${html}</span>`
+      }
+
+      html = html.replace(/('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")/g, '<span class="str">$1</span>')
+      html = html.replace(/\b(\d[\d_]*)\b/g, '<span class="num">$1</span>')
+      html = html.replace(/\b(class|export|const|let|return|if|for|of|new|throw|async|await|function|import|from|default|while|try|catch|finally|continue|typeof|instanceof)\b/g, '<span class="kw">$1</span>')
+      html = html.replace(/\b(Promise|Map|Set|Error|Object|Date|DOMException|JSON|Math|console|crypto|localStorage|fetch|structuredClone)\b/g, '<span class="typ">$1</span>')
+      html = html.replace(/\b(PipelineOrchestrator|PipelineEventBus|DeadLetterQueue)\b/g, '<span class="cls">$1</span>')
+      html = html.replace(/\b([a-z_$#][\w$]*)\s*(?=\()/gi, (m, name) => {
+        if (['if', 'for', 'function', 'class', 'return', 'throw', 'new', 'while'].includes(name)) return m
+        return `<span class="fn">${name}</span>(`
+      })
+      return html
+    }
+
+    const lineNumsEl = document.getElementById('lineNums')
+    const codePaneEl = document.getElementById('codePane')
+    const scrollEl = document.getElementById('scroll')
+    const posEl = document.getElementById('pos')
+    const statusEl = document.getElementById('statusMsg')
+
+    let typed = PREFILL
+    let paused = false
+    window.typingComplete = false
+
+    function rand(min, max) {
+      return min + Math.random() * (max - min)
+    }
+
+    function scrollToCursor() {
+      const cursor = codePaneEl.querySelector('.cursor')
+      if (!cursor) return
+      const rect = cursor.getBoundingClientRect()
+      const container = scrollEl.getBoundingClientRect()
+      const offset = rect.top - container.top - container.height * 0.55
+      scrollEl.scrollTop += offset
+    }
+
+    function updateUI() {
+      const lines = typed.split('\n')
+      const lineCount = Math.max(lines.length, 1)
+
+      lineNumsEl.innerHTML = Array.from({ length: lineCount }, (_, i) =>
+        `<div>${i + 1}</div>`
+      ).join('')
+
+      codePaneEl.innerHTML = lines.map(highlight).join('\n') + '<span class="cursor"></span>'
+
+      const lastLine = lines[lines.length - 1] ?? ''
+      posEl.textContent = `Ln ${lineCount}, Col ${lastLine.length + 1}`
+
+      scrollToCursor()
+    }
+
+    function wait(ms) {
+      return new Promise((resolve) => {
+        const tick = () => {
+          if (paused) { requestAnimationFrame(tick); return }
+          setTimeout(resolve, ms)
+        }
+        tick()
+      })
+    }
+
+    async function typeCode() {
+      window.typingComplete = false
+      typed = PREFILL
+      updateUI()
+      await wait(400)
+
+      const cfg = demo.typing
+
+      for (let i = TYPE_FROM; i < SOURCE.length; i++) {
+        while (paused) await wait(30)
+
+        const ch = SOURCE[i]
+        typed += ch
+        updateUI()
+
+        let delay
+        if (ch === '\n') {
+          delay = rand(cfg.newlinePauseMin, cfg.newlinePauseMax)
+        } else if (ch === ' ') {
+          delay = rand(2, 7)
+        } else {
+          delay = rand(cfg.charDelayMin, cfg.charDelayMax)
+        }
+
+        await wait(delay)
+      }
+
+      statusEl.textContent = 'Готово ✓'
+      window.typingComplete = true
+    }
+
+    typeCode()
+  </script>
+</body>
+</html>
