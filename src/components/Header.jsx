@@ -9,6 +9,9 @@ export default function Header() {
   const { t } = useLang()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= 1024
+  )
 
   const navLinks = [
     { to: '/services', label: t.nav.services },
@@ -17,6 +20,17 @@ export default function Header() {
     { to: '/why', label: t.nav.about },
     { to: '/contact', label: t.nav.contacts },
   ]
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const update = () => {
+      setIsDesktop(mq.matches)
+      if (mq.matches) setOpen(false)
+    }
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -41,43 +55,48 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container-wide flex items-center justify-between gap-6 h-[4.25rem] md:h-[5rem] px-5 md:px-10 lg:px-14">
+      <div className="container-wide flex items-center justify-between gap-4 h-[4.25rem] md:h-[5rem] px-5 md:px-10 lg:px-14">
         <Logo size="lg" className="shrink-0" />
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              className={({ isActive }) =>
-                `nav-link${isActive ? ' nav-link--active' : ''}`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+        {isDesktop && (
+          <nav className="flex items-center gap-6 xl:gap-8">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) =>
+                  `nav-link${isActive ? ' nav-link--active' : ''}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+        )}
 
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <LanguageSwitch />
-          <Link to="/contact#form" className="btn-primary hidden lg:inline-flex !py-2.5 !px-5 !text-xs uppercase tracking-wide">
-            {t.nav.discuss}
-          </Link>
-          <button
-            type="button"
-            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-lg border border-white/15 bg-surface/60 text-white hover:border-primary/40 transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-            aria-expanded={open}
-          >
-            {open ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {isDesktop ? (
+            <Link to="/contact#form" className="btn-primary inline-flex !py-2.5 !px-5 !text-xs uppercase tracking-wide">
+              {t.nav.discuss}
+            </Link>
+          ) : (
+            <button
+              type="button"
+              className="flex items-center justify-center h-9 w-9 rounded-lg border border-white/15 bg-surface/60 text-white hover:border-primary/40 transition-colors"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+              aria-expanded={open}
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          )}
         </div>
       </div>
 
-      {open && (
-        <div className="lg:hidden fixed inset-0 top-[4.25rem] md:top-[5rem] bg-bg/98 backdrop-blur-xl z-40">
+      {open && !isDesktop && (
+        <div className="fixed inset-0 top-[4.25rem] md:top-[5rem] bg-bg/98 backdrop-blur-xl z-40">
           <nav className="flex flex-col p-6 gap-1">
             {navLinks.map((link) => (
               <NavLink
