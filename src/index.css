@@ -181,18 +181,28 @@ body {
 
 @media (max-width: 1023px) {
   .page-background {
-    background-position: center bottom;
-    background-size: 160% auto;
-    opacity: 0.45;
+    background-position: center 14%;
+    background-size: 170% auto;
+    opacity: 0.65;
   }
 
-  .page-overlay--home,
+  .page-overlay--home {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 7, 10, 0.28) 0%,
+      rgba(5, 7, 10, 0.4) 34%,
+      rgba(5, 7, 10, 0.82) 54%,
+      rgba(5, 7, 10, 0.95) 76%,
+      #05070a 100%
+    );
+  }
+
   .page-overlay--inner {
     background: linear-gradient(
       to bottom,
-      #05070a 0%,
-      rgba(5, 7, 10, 0.92) 55%,
-      rgba(5, 7, 10, 0.85) 100%
+      rgba(5, 7, 10, 0.55) 0%,
+      rgba(5, 7, 10, 0.86) 42%,
+      rgba(5, 7, 10, 0.92) 100%
     );
   }
 }
