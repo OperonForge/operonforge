@@ -25,7 +25,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
-              <Link to="/contact" className="btn-primary w-full sm:w-auto uppercase tracking-wide !text-sm">
+              <Link to="/contact#form" className="btn-primary w-full sm:w-auto uppercase tracking-wide !text-sm">
                 Обсудить проект
               </Link>
               <Link to="/portfolio" className="btn-link w-full sm:w-auto">

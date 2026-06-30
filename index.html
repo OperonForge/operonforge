@@ -6,11 +6,32 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05070a" />
     <meta
       name="description"
       content="OperonForge — превращаем хаос в работающую систему. Сайты, заявки, автоматизация и цифровые решения для бизнеса."
     />
-    <title>OperonForge</title>
+    <title>OperonForge — цифровые системы для бизнеса</title>
+
+    <!-- Open Graph / соцсети (Telegram, WhatsApp, и т.д.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OperonForge" />
+    <meta property="og:title" content="OperonForge — превращаем хаос в работающую систему" />
+    <meta
+      property="og:description"
+      content="Сайты, системы заявок и автоматизация бизнес-процессов. Собираем разрозненные процессы в единую работающую систему."
+    />
+    <meta property="og:url" content="https://operonforge.com/" />
+    <meta property="og:image" content="https://operonforge.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OperonForge — превращаем хаос в работающую систему" />
+    <meta
+      name="twitter:description"
+      content="Сайты, системы заявок и автоматизация бизнес-процессов."
+    />
+    <meta name="twitter:image" content="https://operonforge.com/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,6 +40,14 @@
     />
   </head>
   <body>
+    <!-- Скрытая форма для детекта Netlify Forms при сборке (реальная форма рендерится в React) -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="text" name="contact" />
+      <textarea name="task"></textarea>
+      <textarea name="problem"></textarea>
+      <input name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

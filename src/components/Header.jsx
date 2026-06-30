@@ -7,7 +7,7 @@ const navLinks = [
   { to: '/services', label: 'Услуги' },
   { to: '/portfolio', label: 'Кейсы' },
   { to: '/process', label: 'Процесс' },
-  { to: '/why', label: 'Почему OperonForge' },
+  { to: '/why', label: 'О нас' },
   { to: '/contact', label: 'Контакты' },
 ]
 
@@ -57,8 +57,8 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3 shrink-0">
-          <Link to="/contact" className="btn-outline hidden sm:inline-flex !py-2 !px-5 !text-xs">
-            Связаться
+          <Link to="/contact#form" className="btn-primary hidden sm:inline-flex !py-2.5 !px-5 !text-xs uppercase tracking-wide">
+            Обсудить проект
           </Link>
           <button
             type="button"
@@ -89,8 +89,8 @@ export default function Header() {
                 {link.label}
               </NavLink>
             ))}
-            <Link to="/contact" onClick={closeMenu} className="btn-outline mt-6 w-full">
-              Связаться
+            <Link to="/contact#form" onClick={closeMenu} className="btn-primary mt-6 w-full uppercase tracking-wide">
+              Обсудить проект
             </Link>
           </nav>
         </div>

@@ -23,7 +23,8 @@ html {
 }
 
 section[id],
-[id="top"] {
+[id="top"],
+[id="form"] {
   scroll-margin-top: 5.5rem;
 }
 

@@ -6,6 +6,7 @@ import PortfolioPage from './pages/PortfolioPage'
 import ProcessPage from './pages/ProcessPage'
 import WhyPage from './pages/WhyPage'
 import ContactPage from './pages/ContactPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/why" element={<WhyPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

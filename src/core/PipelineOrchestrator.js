@@ -806,7 +806,8 @@ function mapTierToCrmStage(tier) {
 }
 
 async function pushToCrm(payload) {
-  // TODO: AmoCRM REST API v4
+  // TODO: AmoCRM REST API v4 — payload пойдёт в тело запроса
+  void payload
   await sleep(120 + Math.random() * 200)
   return { ok: true, status: 200, dealId: `deal-${crypto.randomUUID().slice(0, 8)}` }
 }

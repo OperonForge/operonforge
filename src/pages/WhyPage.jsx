@@ -5,7 +5,7 @@ export default function WhyPage() {
   return (
     <>
       <PageHeader
-        title="Почему OperonForge"
+        title="Почему компании выбирают OperonForge"
         subtitle="Мы изучаем, как работает бизнес, а не просто рисуем страницы."
       />
       <WhyUs hideHeading />

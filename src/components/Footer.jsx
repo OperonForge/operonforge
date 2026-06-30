@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import logoSymbol from '../assets/logo-symbol-trimmed.png'
 
 const footerLinks = [
   { to: '/services', label: 'Услуги' },
   { to: '/portfolio', label: 'Кейсы' },
   { to: '/process', label: 'Процесс' },
+  { to: '/why', label: 'О нас' },
   { to: '/contact', label: 'Контакты' },
 ]
 
 const socials = [
-  { href: 'https://t.me/operonforge', label: 'Telegram' },
-  { href: 'mailto:hello@operonforge.com', label: 'Email' },
-  { href: 'https://instagram.com/operonforge', label: 'Instagram' },
-  { href: 'https://tiktok.com/@operonforge', label: 'TikTok' },
+  { href: 'https://t.me/operonforge', label: 'Telegram-канал' },
+  { href: 'mailto:operonforge@gmail.com', label: 'operonforge@gmail.com' },
 ]
 
 export default function Footer() {
@@ -66,8 +66,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/[0.06]">
-          <p className="text-xs text-text-muted text-center md:text-left">
+        <div className="pt-8 border-t border-white/[0.06] flex items-center justify-center md:justify-start gap-2.5">
+          <img
+            src={logoSymbol}
+            alt=""
+            aria-hidden="true"
+            className="h-6 w-auto object-contain logo-symbol"
+          />
+          <p className="text-xs text-text-muted">
             © 2026 OperonForge. Digital systems & automation.
           </p>
         </div>

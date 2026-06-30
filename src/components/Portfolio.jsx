@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
-import imgFdPortal from '../assets/case-fd-portal.png'
-import imgAtelier from '../assets/case-atelier-restauro.png'
-import imgCafe from '../assets/case-cafe555.png'
-import imgRequests from '../assets/case-requests.png'
+import imgFdPortal from '../assets/case-fd-portal.webp'
+import imgAtelier from '../assets/case-atelier-restauro.webp'
+import imgCafe from '../assets/case-cafe555.webp'
 
 const cases = [
   {
@@ -22,6 +22,7 @@ const cases = [
     title: 'Atelier Restauro',
     type: 'Сайт реставрационной мастерской',
     image: imgAtelier,
+    link: 'https://atelier-restauro.netlify.app/',
     was: 'Клиентам было сложно быстро понять услуги и связаться с мастером.',
     did: 'Создали сайт с понятной структурой, примерами работ и удобным сценарием обращения.',
     result:
@@ -29,28 +30,21 @@ const cases = [
     tags: ['Сайт услуг', 'Примеры работ', 'Контакт', 'Локальный бизнес'],
   },
   {
-    title: 'Кафе 555',
-    type: 'Концепт сайта для кафе и гостиницы',
+    title: 'Комплекс 555',
+    type: 'Сайт придорожного кафе и гостиницы',
     image: imgCafe,
-    was: 'Кафе и мини-гостиницам важно принимать брони и не терять обращения.',
-    did: 'Меню, бронирование, заказы и система уведомлений.',
+    link: 'https://kompleks-555.netlify.app/',
+    was: 'Придорожному кафе и гостинице нужно показать формат и принимать заказы и брони, не теряя обращений.',
+    did: 'Собрали сайт: кафе с предзаказом меню, гостиница, контакты и быстрый звонок.',
     result:
-      'Гости могут изучить меню, забронировать номер и оформить заказ в одном месте.',
-    tags: ['Бронирование', 'Меню', 'Заказы', 'Уведомления'],
-  },
-  {
-    title: 'Система заявок',
-    type: 'Концепт платформы обработки обращений',
-    image: imgRequests,
-    was: 'Заявки приходили в разные сообщения, очередь было сложно контролировать.',
-    did: 'Форма заявок, Telegram-уведомления, статусы, очередь и админ-панель.',
-    result:
-      'Все обращения собираются в одну очередь со статусами, а уведомления приходят в Telegram — ничего не теряется.',
-    tags: ['Форма заявок', 'Очередь', 'Статусы', 'Telegram', 'Админ-панель'],
+      'Гости могут изучить формат, заказать еду заранее и забронировать номер в одном месте.',
+    tags: ['Кафе', 'Гостиница', 'Предзаказ', 'Бронирование'],
   },
 ]
 
-export default function Portfolio({ hideHeading = false }) {
+export default function Portfolio({ hideHeading = false, limit, moreLink }) {
+  const items = limit ? cases.slice(0, limit) : cases
+
   return (
     <AnimatedSection id="cases" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
@@ -62,7 +56,7 @@ export default function Portfolio({ hideHeading = false }) {
         )}
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-          {cases.map((item, i) => (
+          {items.map((item, i) => (
             <motion.article
               key={item.title}
               initial={{ opacity: 0, y: 24 }}
@@ -151,6 +145,15 @@ export default function Portfolio({ hideHeading = false }) {
             </motion.article>
           ))}
         </div>
+
+        {moreLink && (
+          <div className="text-center mt-10">
+            <Link to={moreLink.to} className="btn-link inline-flex justify-center">
+              {moreLink.label}
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        )}
       </div>
     </AnimatedSection>
   )
