@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function NotFoundPage() {
+  const { t } = useLang()
   return (
     <section className="min-h-[70vh] flex items-center section-padding relative">
       <div className="container-main text-center">
@@ -9,14 +11,14 @@ export default function NotFoundPage() {
           404
         </span>
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
-          Страница не найдена
+          {t.notFound.title}
         </h1>
         <p className="text-text-secondary mb-8 max-w-md mx-auto">
-          Возможно, ссылка устарела или страница была перемещена.
+          {t.notFound.text}
         </p>
         <Link to="/" className="btn-primary">
           <ArrowLeft size={18} />
-          На главную
+          {t.notFound.home}
         </Link>
       </div>
     </section>

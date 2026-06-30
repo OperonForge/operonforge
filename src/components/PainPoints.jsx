@@ -1,42 +1,18 @@
 import { MessageSquareOff, Search, Layers, TrendingUp } from 'lucide-react'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
+import { useLang } from '../i18n/LanguageContext'
 
-const pains = [
-  {
-    icon: MessageSquareOff,
-    title: 'Потерянные заявки',
-    description:
-      'Клиенты пишут в разные мессенджеры. Часть обращений забывается или теряется.',
-  },
-  {
-    icon: Search,
-    title: 'Ручная обработка',
-    description:
-      'Владелец ищет сообщения, скрины, даты и детали заказа вручную.',
-  },
-  {
-    icon: Layers,
-    title: 'Нет единой системы',
-    description:
-      'Заявки, оплаты, статусы и клиенты находятся в разных местах.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Сложно масштабироваться',
-    description:
-      'Когда всё держится на ручном контроле, бизнес сложно передать помощнику или команде.',
-  },
-]
+const icons = [MessageSquareOff, Search, Layers, TrendingUp]
 
 export default function PainPoints({ hideHeading = false }) {
+  const { t } = useLang()
+  const pains = t.pains.items.map((item, i) => ({ ...item, icon: icons[i] }))
+
   return (
     <AnimatedSection id="problems" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
         {!hideHeading && (
-          <SectionHeading
-            title="Когда бизнес растёт, хаос начинает стоить денег"
-            subtitle="Заявки приходят из разных источников. Сообщения теряются. Статусы держатся в голове. А время владельца уходит на постоянный ручной контроль."
-          />
+          <SectionHeading title={t.pains.title} subtitle={t.pains.subtitle} />
         )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">

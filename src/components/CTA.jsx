@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Send, Mail, MessageCircle } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
+import { useLang } from '../i18n/LanguageContext'
 
 const TELEGRAM_LINK = 'https://t.me/operonforge'
 const EMAIL = 'operonforge@gmail.com'
 
 export default function CTA() {
+  const { t } = useLang()
+  const f = t.cta.form
   const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (e) => {
@@ -32,11 +35,10 @@ export default function CTA() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight text-white mb-5">
-              Свяжитесь с нами
+              {t.cta.title}
             </h2>
             <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-8">
-              Обсудим вашу задачу и предложим решение, которое действительно
-              поможет вашему бизнесу.
+              {t.cta.subtitle}
             </p>
             <div className="space-y-3">
               <a
@@ -48,7 +50,7 @@ export default function CTA() {
                 </span>
                 <span>
                   <span className="block text-sm font-semibold text-white">{EMAIL}</span>
-                  <span className="block text-xs text-text-muted">Email — для связи</span>
+                  <span className="block text-xs text-text-muted">{t.cta.emailSub}</span>
                 </span>
               </a>
               <a
@@ -61,8 +63,8 @@ export default function CTA() {
                   <MessageCircle size={18} className="text-primary-light" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-white">t.me/operonforge</span>
-                  <span className="block text-xs text-text-muted">Официальный канал OperonForge</span>
+                  <span className="block text-sm font-semibold text-white">{t.cta.tgTitle}</span>
+                  <span className="block text-xs text-text-muted">{t.cta.tgSub}</span>
                 </span>
               </a>
             </div>
@@ -80,77 +82,77 @@ export default function CTA() {
             <input type="hidden" name="form-name" value="contact" />
             <p className="hidden">
               <label>
-                Не заполняйте это поле: <input name="bot-field" />
+                <input name="bot-field" />
               </label>
             </p>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-1.5">
-                Имя
+                {f.name}
               </label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                placeholder="Как к вам обращаться"
+                placeholder={f.namePh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted"
               />
             </div>
 
             <div>
               <label htmlFor="contact" className="block text-sm font-medium text-text-secondary mb-1.5">
-                Telegram / телефон
+                {f.contact}
               </label>
               <input
                 id="contact"
                 name="contact"
                 type="text"
                 required
-                placeholder="@username или +7..."
+                placeholder={f.contactPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted"
               />
             </div>
 
             <div>
               <label htmlFor="task" className="block text-sm font-medium text-text-secondary mb-1.5">
-                Что нужно сделать?
+                {f.task}
               </label>
               <textarea
                 id="task"
                 name="task"
                 rows={3}
                 required
-                placeholder="Сайт, система заявок, автоматизация..."
+                placeholder={f.taskPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted resize-none"
               />
             </div>
 
             <div>
               <label htmlFor="problem" className="block text-sm font-medium text-text-secondary mb-1.5">
-                Где сейчас основная проблема?
+                {f.problem}
               </label>
               <textarea
                 id="problem"
                 name="problem"
                 rows={2}
-                placeholder="Заявки теряются, нет единой системы..."
+                placeholder={f.problemPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted resize-none"
               />
             </div>
 
             <button type="submit" disabled={status === 'sending'} className="btn-primary w-full disabled:opacity-60">
-              {status === 'sending' ? 'Отправляем…' : 'Обсудить проект'}
+              {status === 'sending' ? f.sending : f.submit}
               <Send size={18} />
             </button>
 
             {status === 'success' && (
               <p className="text-sm text-primary-light text-center">
-                Заявка отправлена. Мы свяжемся с вами в ближайшее время.
+                {f.success}
               </p>
             )}
             {status === 'error' && (
               <p className="text-sm text-red-400 text-center">
-                Не удалось отправить. Напишите нам на {EMAIL}.
+                {f.error} {EMAIL}.
               </p>
             )}
           </form>

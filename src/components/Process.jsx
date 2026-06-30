@@ -1,24 +1,16 @@
 import { ChevronDown } from 'lucide-react'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
-
-const steps = [
-  'Обсуждаем задачу',
-  'Анализируем процесс',
-  'Проектируем систему',
-  'Разрабатываем',
-  'Запускаем',
-  'Поддерживаем',
-]
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Process({ hideHeading = false }) {
+  const { t } = useLang()
+  const steps = t.process.steps
+
   return (
     <AnimatedSection id="process" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
         {!hideHeading && (
-          <SectionHeading
-            title="Как мы работаем"
-            subtitle="Сначала разбираем процесс, затем создаём решение под ваш бизнес."
-          />
+          <SectionHeading title={t.process.title} subtitle={t.process.subtitle} />
         )}
 
         <div className="max-w-md mx-auto">

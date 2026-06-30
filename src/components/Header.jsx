@@ -2,18 +2,21 @@ import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
-
-const navLinks = [
-  { to: '/services', label: 'Услуги' },
-  { to: '/portfolio', label: 'Кейсы' },
-  { to: '/process', label: 'Процесс' },
-  { to: '/why', label: 'О нас' },
-  { to: '/contact', label: 'Контакты' },
-]
+import LanguageSwitch from './LanguageSwitch'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Header() {
+  const { t } = useLang()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const navLinks = [
+    { to: '/services', label: t.nav.services },
+    { to: '/portfolio', label: t.nav.cases },
+    { to: '/process', label: t.nav.process },
+    { to: '/why', label: t.nav.about },
+    { to: '/contact', label: t.nav.contacts },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -56,17 +59,19 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 shrink-0">
-          <Link to="/contact#form" className="btn-primary hidden sm:inline-flex !py-2.5 !px-5 !text-xs uppercase tracking-wide">
-            Обсудить проект
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <LanguageSwitch />
+          <Link to="/contact#form" className="btn-primary hidden lg:inline-flex !py-2.5 !px-5 !text-xs uppercase tracking-wide">
+            {t.nav.discuss}
           </Link>
           <button
             type="button"
-            className="lg:hidden p-2 text-text-secondary hover:text-white transition-colors"
+            className="lg:hidden p-2 -mr-2 text-text-secondary hover:text-white transition-colors"
             onClick={() => setOpen(!open)}
-            aria-label={open ? 'Закрыть меню' : 'Открыть меню'}
+            aria-label="Menu"
+            aria-expanded={open}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -90,7 +95,7 @@ export default function Header() {
               </NavLink>
             ))}
             <Link to="/contact#form" onClick={closeMenu} className="btn-primary mt-6 w-full uppercase tracking-wide">
-              Обсудить проект
+              {t.nav.discuss}
             </Link>
           </nav>
         </div>

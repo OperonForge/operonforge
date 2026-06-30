@@ -9,54 +9,22 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
+import { useLang } from '../i18n/LanguageContext'
 
-const services = [
-  {
-    icon: Globe,
-    title: 'Корпоративный сайт',
-    description:
-      'Современный сайт, который помогает объяснить услуги и получать заявки.',
-  },
-  {
-    icon: ClipboardList,
-    title: 'Система обработки заявок',
-    description:
-      'Формы, статусы, уведомления и удобная обработка обращений.',
-  },
-  {
-    icon: Send,
-    title: 'Telegram-интеграции',
-    description:
-      'Все важные уведомления и обращения приходят напрямую в Telegram.',
-  },
-  {
-    icon: UserCircle,
-    title: 'Личный кабинет клиента',
-    description:
-      'Статусы заявок, история обращений, документы и важная информация.',
-  },
-  {
-    icon: LayoutDashboard,
-    title: 'Внутренняя панель управления',
-    description:
-      'Управление заявками, клиентами, статусами и контентом.',
-  },
-  {
-    icon: Workflow,
-    title: 'Автоматизация бизнес-процессов',
-    description:
-      'Объединяем сайт, формы, уведомления и внутренние процессы в одну систему.',
-  },
-]
+const icons = [Globe, ClipboardList, Send, UserCircle, LayoutDashboard, Workflow]
 
-export default function Services({
-  hideHeading = false,
-  limit,
-  title = 'Что мы создаём',
-  subtitle = 'Не просто сайты. Мы собираем цифровые системы под реальные процессы бизнеса.',
-  moreLink,
-}) {
+export default function Services({ hideHeading = false, limit, variant }) {
+  const { t } = useLang()
+  const services = t.services.items.map((item, i) => ({
+    ...item,
+    icon: icons[i],
+  }))
   const items = limit ? services.slice(0, limit) : services
+
+  const isHome = variant === 'home'
+  const title = isHome ? t.services.homeTitle : t.services.title
+  const subtitle = isHome ? t.services.homeSubtitle : t.services.subtitle
+  const moreLink = isHome ? { to: '/services', label: t.services.more } : null
 
   return (
     <AnimatedSection id="services" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>

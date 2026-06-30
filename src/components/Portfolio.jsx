@@ -2,57 +2,28 @@ import { motion } from 'framer-motion'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
+import { useLang } from '../i18n/LanguageContext'
 import imgFdPortal from '../assets/case-fd-portal.webp'
 import imgAtelier from '../assets/case-atelier-restauro.webp'
 import imgCafe from '../assets/case-cafe555.webp'
 
-const cases = [
-  {
-    title: 'FD Federation',
-    type: 'Портал игрового сообщества',
-    image: imgFdPortal,
-    link: 'https://fd-federation.netlify.app/server150.html',
-    was: 'Информация, состав и навигация сообщества были разбросаны по разным местам.',
-    did: 'Собрали единый портал: разделы, ростер, статусы серверов и точки входа для участников.',
-    result:
-      'Участники получили единую точку входа для материалов, структуры и внутренних процессов сообщества.',
-    tags: ['Портал', 'Навигация', 'Ростер', 'Разделы'],
-  },
-  {
-    title: 'Atelier Restauro',
-    type: 'Сайт реставрационной мастерской',
-    image: imgAtelier,
-    link: 'https://atelier-restauro.netlify.app/',
-    was: 'Клиентам было сложно быстро понять услуги и связаться с мастером.',
-    did: 'Создали сайт с понятной структурой, примерами работ и удобным сценарием обращения.',
-    result:
-      'Клиент может за 1–2 минуты понять услуги и оставить заявку без лишних звонков и переписок.',
-    tags: ['Сайт услуг', 'Примеры работ', 'Контакт', 'Локальный бизнес'],
-  },
-  {
-    title: 'Комплекс 555',
-    type: 'Сайт придорожного кафе и гостиницы',
-    image: imgCafe,
-    link: 'https://kompleks-555.netlify.app/',
-    was: 'Придорожному кафе и гостинице нужно показать формат и принимать заказы и брони, не теряя обращений.',
-    did: 'Собрали сайт: кафе с предзаказом меню, гостиница, контакты и быстрый звонок.',
-    result:
-      'Гости могут изучить формат, заказать еду заранее и забронировать номер в одном месте.',
-    tags: ['Кафе', 'Гостиница', 'Предзаказ', 'Бронирование'],
-  },
+const caseAssets = [
+  { id: 'fd', image: imgFdPortal, link: 'https://fd-federation.netlify.app/server150.html' },
+  { id: 'atelier', image: imgAtelier, link: 'https://atelier-restauro.netlify.app/' },
+  { id: 'kompleks', image: imgCafe, link: 'https://kompleks-555.netlify.app/' },
 ]
 
-export default function Portfolio({ hideHeading = false, limit, moreLink }) {
+export default function Portfolio({ hideHeading = false, limit, variant }) {
+  const { t } = useLang()
+  const cases = caseAssets.map((asset) => ({ ...asset, ...t.portfolio.cases[asset.id] }))
   const items = limit ? cases.slice(0, limit) : cases
+  const moreLink = variant === 'home' ? { to: '/portfolio', label: t.portfolio.more } : null
 
   return (
     <AnimatedSection id="cases" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
         {!hideHeading && (
-          <SectionHeading
-            title="Кейсы"
-            subtitle="Реальные проекты и рабочие сценарии."
-          />
+          <SectionHeading title={t.portfolio.title} subtitle={t.portfolio.subtitle} />
         )}
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6">
@@ -85,7 +56,7 @@ export default function Portfolio({ hideHeading = false, limit, moreLink }) {
                 </span>
                 {item.link && (
                   <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-white bg-bg/70 backdrop-blur-sm border border-white/15 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                    Открыть
+                    {t.portfolio.open}
                     <ExternalLink size={13} />
                   </span>
                 )}
@@ -99,20 +70,20 @@ export default function Portfolio({ hideHeading = false, limit, moreLink }) {
                 <div className="space-y-3 mb-6 flex-grow">
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
-                      Что было
+                      {t.portfolio.was}
                     </span>
                     <p className="text-sm text-text-secondary mt-1">{item.was}</p>
                   </div>
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
-                      Что сделали
+                      {t.portfolio.did}
                     </span>
                     <p className="text-sm text-text-secondary mt-1">{item.did}</p>
                   </div>
                   {item.result && (
                     <div className="rounded-lg bg-primary/[0.07] border border-primary/20 p-3">
                       <span className="text-xs font-semibold uppercase tracking-wider text-primary-light">
-                        Результат
+                        {t.portfolio.result}
                       </span>
                       <p className="text-sm text-text-secondary mt-1">{item.result}</p>
                     </div>
@@ -137,7 +108,7 @@ export default function Portfolio({ hideHeading = false, limit, moreLink }) {
                     rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary-light hover:text-white transition-colors"
                   >
-                    Открыть сайт
+                    {t.portfolio.openSite}
                     <ExternalLink size={16} />
                   </a>
                 )}

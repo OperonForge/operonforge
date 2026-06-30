@@ -7,53 +7,18 @@ import {
   Rocket,
 } from 'lucide-react'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
+import { useLang } from '../i18n/LanguageContext'
 
-const reasons = [
-  {
-    icon: Route,
-    title: 'Сначала процесс — потом дизайн',
-    description:
-      'Мы изучаем, как работает бизнес, а не просто рисуем страницы.',
-  },
-  {
-    icon: Zap,
-    title: 'Быстрый запуск',
-    description:
-      'Благодаря современным инструментам разработки запускаем проекты быстрее без потери качества.',
-  },
-  {
-    icon: GitBranch,
-    title: 'Понятная структура',
-    description:
-      'Разделяем хаос на логичные процессы и понятные сценарии.',
-  },
-  {
-    icon: Sliders,
-    title: 'Под каждую задачу отдельно',
-    description:
-      'Не используем один шаблон для всех клиентов.',
-  },
-  {
-    icon: LifeBuoy,
-    title: 'Развитие после запуска',
-    description:
-      'Проект можно расширять и улучшать по мере роста бизнеса.',
-  },
-  {
-    icon: Rocket,
-    title: 'Основа для будущих систем',
-    description:
-      'Любой проект можно развить в CRM, кабинет клиента или внутреннюю платформу.',
-  },
-]
+const icons = [Route, Zap, GitBranch, Sliders, LifeBuoy, Rocket]
 
 export default function WhyUs({ hideHeading = false }) {
+  const { t } = useLang()
+  const reasons = t.why.items.map((item, i) => ({ ...item, icon: icons[i] }))
+
   return (
     <AnimatedSection id="why" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
-        {!hideHeading && (
-          <SectionHeading title="Почему компании выбирают OperonForge" />
-        )}
+        {!hideHeading && <SectionHeading title={t.why.title} />}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {reasons.map(({ icon: Icon, title, description }) => (

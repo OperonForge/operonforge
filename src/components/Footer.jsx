@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
 import logoSymbol from '../assets/logo-symbol-trimmed.png'
-
-const footerLinks = [
-  { to: '/services', label: 'Услуги' },
-  { to: '/portfolio', label: 'Кейсы' },
-  { to: '/process', label: 'Процесс' },
-  { to: '/why', label: 'О нас' },
-  { to: '/contact', label: 'Контакты' },
-]
+import { useLang } from '../i18n/LanguageContext'
 
 const socials = [
-  { href: 'https://t.me/operonforge', label: 'Telegram-канал' },
+  { href: 'https://t.me/operonforge', key: 'telegram' },
   { href: 'mailto:operonforge@gmail.com', label: 'operonforge@gmail.com' },
 ]
 
 export default function Footer() {
+  const { t } = useLang()
+
+  const footerLinks = [
+    { to: '/services', label: t.nav.services },
+    { to: '/portfolio', label: t.nav.cases },
+    { to: '/process', label: t.nav.process },
+    { to: '/why', label: t.nav.about },
+    { to: '/contact', label: t.nav.contacts },
+  ]
+
   return (
     <footer className="relative z-10 border-t border-white/[0.08] bg-bg/40 backdrop-blur-sm">
       <div className="container-main section-padding !py-12 md:!py-16 px-5 md:px-8">
@@ -23,13 +26,13 @@ export default function Footer() {
           <div>
             <Logo size="sm" />
             <p className="mt-4 text-sm text-text-secondary leading-relaxed max-w-xs">
-              Разрозненные процессы → единая работающая система.
+              {t.footer.slogan}
             </p>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-              Навигация
+              {t.footer.navTitle}
             </h4>
             <ul className="space-y-2.5">
               {footerLinks.map((link) => (
@@ -47,18 +50,18 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-              Контакты
+              {t.footer.contactsTitle}
             </h4>
             <ul className="space-y-2.5">
               {socials.map((link) => (
-                <li key={link.label}>
+                <li key={link.href}>
                   <a
                     href={link.href}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="text-sm text-text-secondary hover:text-primary-light transition-colors"
                   >
-                    {link.label}
+                    {link.key ? t.footer[link.key] : link.label}
                   </a>
                 </li>
               ))}
@@ -74,7 +77,7 @@ export default function Footer() {
             className="h-6 w-auto object-contain logo-symbol"
           />
           <p className="text-xs text-text-muted">
-            © 2026 OperonForge. Digital systems & automation.
+            {t.footer.copyright}
           </p>
         </div>
       </div>

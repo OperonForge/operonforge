@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Hero() {
+  const { t } = useLang()
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="container-wide relative z-10 w-full px-5 md:px-10 lg:px-14 pt-28 pb-16 md:pt-32 md:pb-20">
@@ -14,22 +16,20 @@ export default function Hero() {
             className="max-w-xl lg:max-w-none"
           >
             <h1 className="text-[2.25rem] sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem] font-bold leading-[1.08] tracking-tight mb-6">
-              <span className="block text-white">Мы превращаем хаос</span>
-              <span className="block text-primary-light mt-1">в работающую систему</span>
+              <span className="block text-white">{t.hero.title1}</span>
+              <span className="block text-primary-light mt-1">{t.hero.title2}</span>
             </h1>
 
             <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-10 max-w-lg">
-              Когда бизнес растёт, заявки, клиенты и процессы начинают жить в
-              разных местах. Мы собираем всё в единую систему, которая экономит
-              время владельца и помогает не терять деньги.
+              {t.hero.subtitle}
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
               <Link to="/contact#form" className="btn-primary w-full sm:w-auto uppercase tracking-wide !text-sm">
-                Обсудить проект
+                {t.hero.discuss}
               </Link>
               <Link to="/portfolio" className="btn-link w-full sm:w-auto">
-                Смотреть кейсы
+                {t.hero.cases}
                 <ArrowRight size={18} />
               </Link>
             </div>
