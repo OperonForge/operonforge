@@ -15,9 +15,9 @@ export default function Logo({ className = '', showText = true, size = 'md' }) {
       gap: 'gap-3',
     },
     lg: {
-      icon: 'h-9 w-auto md:h-10',
-      text: 'h-5 w-auto md:h-[1.4rem]',
-      gap: 'gap-2.5 md:gap-3',
+      icon: 'h-8 w-auto sm:h-9 md:h-10',
+      text: 'h-4 w-auto sm:h-5 md:h-[1.4rem]',
+      gap: 'gap-2 sm:gap-2.5 md:gap-3',
     },
   }
 

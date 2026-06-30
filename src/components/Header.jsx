@@ -66,12 +66,12 @@ export default function Header() {
           </Link>
           <button
             type="button"
-            className="lg:hidden p-2 -mr-2 text-text-secondary hover:text-white transition-colors"
+            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-lg border border-white/15 bg-surface/60 text-white hover:border-primary/40 transition-colors"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
             aria-expanded={open}
           >
-            {open ? <X size={24} /> : <Menu size={24} />}
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
