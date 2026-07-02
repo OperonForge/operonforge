@@ -94,6 +94,7 @@ export default function CTA() {
                 name="name"
                 type="text"
                 required
+                autoComplete="name"
                 placeholder={f.namePh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted"
               />
@@ -108,6 +109,7 @@ export default function CTA() {
                 name="contact"
                 type="text"
                 required
+                autoComplete="off"
                 placeholder={f.contactPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted"
               />
@@ -122,6 +124,7 @@ export default function CTA() {
                 name="task"
                 rows={3}
                 required
+                autoComplete="off"
                 placeholder={f.taskPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted resize-none"
               />
@@ -135,6 +138,7 @@ export default function CTA() {
                 id="problem"
                 name="problem"
                 rows={2}
+                autoComplete="off"
                 placeholder={f.problemPh}
                 className="w-full px-4 py-3 text-sm text-white bg-surface-secondary/80 border border-white/[0.08] rounded-lg outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors placeholder:text-text-muted resize-none"
               />
