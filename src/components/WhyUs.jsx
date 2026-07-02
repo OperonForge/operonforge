@@ -11,14 +11,16 @@ import { useLang } from '../i18n/LanguageContext'
 
 const icons = [Route, Zap, GitBranch, Sliders, LifeBuoy, Rocket]
 
-export default function WhyUs({ hideHeading = false }) {
+export default function WhyUs({ hideHeading = false, limit, title }) {
   const { t } = useLang()
-  const reasons = t.why.items.map((item, i) => ({ ...item, icon: icons[i] }))
+  const reasons = t.why.items
+    .map((item, i) => ({ ...item, icon: icons[i] }))
+    .slice(0, limit ?? t.why.items.length)
 
   return (
     <AnimatedSection id="why" className={`section-padding relative ${hideHeading ? '!pt-0' : ''}`}>
       <div className="container-main">
-        {!hideHeading && <SectionHeading title={t.why.title} />}
+        {!hideHeading && <SectionHeading title={title ?? t.why.title} />}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {reasons.map(({ icon: Icon, title, description }) => (

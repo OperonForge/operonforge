@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import Seo from '../components/Seo'
 import { useLang } from '../i18n/LanguageContext'
 
 export default function NotFoundPage() {
   const { t } = useLang()
   return (
     <section className="min-h-[70vh] flex items-center section-padding relative">
+      <Seo pageKey="notFound" />
       <div className="container-main text-center">
         <span className="block text-6xl md:text-8xl font-bold text-primary/30 mb-4">
           404

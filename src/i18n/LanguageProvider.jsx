@@ -17,7 +17,6 @@ export function LanguageProvider({ children }) {
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, lang)
     document.documentElement.lang = lang
-    document.title = translations[lang].meta.title
   }, [lang])
 
   const toggle = () => setLang((l) => (l === 'en' ? 'ru' : 'en'))

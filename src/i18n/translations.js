@@ -3,6 +3,42 @@ export const translations = {
     meta: {
       title: 'OperonForge — digital systems for business',
     },
+    seo: {
+      home: {
+        title: 'OperonForge — digital systems for business',
+        description:
+          'We turn business chaos into a working system: websites, lead management systems, Telegram integrations and process automation.',
+      },
+      services: {
+        title: 'Services — OperonForge | Digital systems for business',
+        description:
+          'Websites, lead management systems, Telegram integrations, client dashboards and business process automation.',
+      },
+      portfolio: {
+        title: 'Cases — OperonForge | Digital systems for business',
+        description:
+          'Client projects and ready-to-launch systems you can adapt and launch for your business in days.',
+      },
+      process: {
+        title: 'Process — OperonForge | Digital systems for business',
+        description:
+          'How we work: from understanding your process to launching and supporting a working system.',
+      },
+      why: {
+        title: 'About — OperonForge | Digital systems for business',
+        description:
+          'Who we are and how we think. We build digital systems around real business processes.',
+      },
+      contact: {
+        title: 'Contact — OperonForge | Digital systems for business',
+        description:
+          "Let's discuss your task and propose a solution that genuinely helps your business.",
+      },
+      notFound: {
+        title: 'Page not found — OperonForge',
+        description: 'The page was not found.',
+      },
+    },
     nav: {
       services: 'Services',
       cases: 'Cases',
@@ -88,6 +124,14 @@ export const translations = {
     why: {
       title: 'Why companies choose OperonForge',
       subtitle: 'We study how the business works, not just draw pages.',
+      pageTitle: 'About us',
+      pageSubtitle: 'A small studio that brings order to business processes.',
+      aboutTitle: 'Who we are',
+      about: [
+        'OperonForge is a small studio that helps businesses bring order to their digital processes. We build not just websites, but working systems: lead intake, automation and tools that save the owner time.',
+        'We start with how your business actually works, not with pictures. First we understand the process, then we design a solution — one that is convenient for both you and your clients.',
+      ],
+      thinkTitle: 'How we think',
       items: [
         {
           title: 'Process first, design second',
@@ -136,38 +180,63 @@ export const translations = {
     portfolio: {
       title: 'Cases',
       subtitle: 'Real projects and working scenarios.',
-      was: 'Before',
-      did: 'What we did',
+      clientTitle: 'Client Projects',
+      readyTitle: 'Ready-to-Launch Systems',
+      readyIntro:
+        'Systems we designed for common business types. They can be adapted and launched for your company in days — you see the finished product before you pay.',
+      conceptBadge: 'Concept',
       result: 'Result',
       open: 'Open',
       openSite: 'Open website',
       more: 'All cases',
+      labels: {
+        client: { was: 'Before', did: 'What we did' },
+        concept: { was: 'The Challenge', did: 'Solution' },
+      },
       cases: {
+        sokrat: {
+          draft: true,
+          group: 'client',
+          title: 'Sokrat',
+          type: '[SOKRAT_TYPE]',
+          was: '[SOKRAT_BEFORE]',
+          did: '[SOKRAT_SOLUTION]',
+          result: '[SOKRAT_RESULT]',
+          tags: ['[SOKRAT_TAG]'],
+        },
         fd: {
+          group: 'client',
           title: 'FD Federation',
-          type: 'Gaming community portal',
-          was: "The community's information, roster and navigation were scattered across different places.",
-          did: 'We built a single portal: sections, roster, server statuses and entry points for members.',
+          type: 'Community request intake system',
+          was: 'Join requests were scattered across the personal DMs of six officers. Nobody knew who had already replied, some requests were lost, and decisions were coordinated chaotically.',
+          did: "We built a single entry point: an application form on the site → every request lands automatically in a shared officers' Telegram chat. Everyone sees every application; decisions are made together within minutes.",
           result:
-            "Members got a single entry point for materials, structure and the community's internal processes.",
-          tags: ['Portal', 'Navigation', 'Roster', 'Sections'],
+            'No request gets lost — every application lives in one place, and decisions are made quickly and together.',
+          tags: [
+            'Request intake',
+            'Single entry point',
+            'Telegram integration',
+            'Team workflow',
+          ],
         },
         atelier: {
+          group: 'concept',
           title: 'Atelier Restauro',
           type: 'Restoration workshop website',
-          was: 'Clients found it hard to quickly understand the services and reach the master.',
+          was: "A common problem for workshops: it's hard for a client to quickly understand the services and prices and to book without phone calls.",
           did: 'We built a site with a clear structure, work samples and a convenient way to get in touch.',
           result:
-            'A client can understand the services and leave a request in 1–2 minutes, without extra calls or chats.',
+            'A visitor understands the services in 1–2 minutes and leaves a request without calls or chats.',
           tags: ['Services site', 'Work samples', 'Contact', 'Local business'],
         },
         kompleks: {
+          group: 'concept',
           title: 'Kompleks 555',
           type: 'Roadside café & hotel website',
-          was: 'A roadside café and hotel needs to present its format and take orders and bookings without losing requests.',
+          was: 'A common problem for roadside businesses: present the format and take orders and bookings from one place without losing requests.',
           did: 'We built the site: café with menu pre-orders, hotel, contacts and a quick call.',
           result:
-            'Guests can explore the format, pre-order food and book a room in one place.',
+            'A guest explores the format, pre-orders food and books a room in one place.',
           tags: ['Café', 'Hotel', 'Pre-order', 'Booking'],
         },
       },
@@ -211,6 +280,42 @@ export const translations = {
   ru: {
     meta: {
       title: 'OperonForge — цифровые системы для бизнеса',
+    },
+    seo: {
+      home: {
+        title: 'OperonForge — цифровые системы для бизнеса',
+        description:
+          'Превращаем хаос в бизнесе в работающую систему: сайты, системы обработки заявок, Telegram-интеграции и автоматизация процессов.',
+      },
+      services: {
+        title: 'Услуги — OperonForge | Цифровые системы для бизнеса',
+        description:
+          'Сайты, системы обработки заявок, Telegram-интеграции, личные кабинеты и автоматизация бизнес-процессов.',
+      },
+      portfolio: {
+        title: 'Кейсы — OperonForge | Цифровые системы для бизнеса',
+        description:
+          'Клиентские проекты и готовые решения, которые можно адаптировать и запустить под ваш бизнес за несколько дней.',
+      },
+      process: {
+        title: 'Процесс — OperonForge | Цифровые системы для бизнеса',
+        description:
+          'Как мы работаем: от разбора процесса до запуска и поддержки работающей системы.',
+      },
+      why: {
+        title: 'О нас — OperonForge | Цифровые системы для бизнеса',
+        description:
+          'Кто мы и как мы думаем. Собираем цифровые системы под реальные процессы бизнеса.',
+      },
+      contact: {
+        title: 'Контакты — OperonForge | Цифровые системы для бизнеса',
+        description:
+          'Обсудим вашу задачу и предложим решение, которое действительно поможет вашему бизнесу.',
+      },
+      notFound: {
+        title: 'Страница не найдена — OperonForge',
+        description: 'Страница не найдена.',
+      },
     },
     nav: {
       services: 'Услуги',
@@ -298,6 +403,14 @@ export const translations = {
     why: {
       title: 'Почему компании выбирают OperonForge',
       subtitle: 'Мы изучаем, как работает бизнес, а не просто рисуем страницы.',
+      pageTitle: 'О нас',
+      pageSubtitle: 'Небольшая студия, которая наводит порядок в процессах бизнеса.',
+      aboutTitle: 'Кто мы',
+      about: [
+        'OperonForge — небольшая студия, которая помогает бизнесу навести порядок в цифровых процессах. Мы делаем не просто сайты, а работающие системы: приём заявок, автоматизацию и инструменты, которые экономят время владельца.',
+        'Мы начинаем с того, как устроен ваш бизнес, а не с картинок. Сначала разбираем процесс, потом проектируем решение — так, чтобы им было удобно пользоваться и вам, и вашим клиентам.',
+      ],
+      thinkTitle: 'Как мы думаем',
       items: [
         {
           title: 'Сначала процесс — потом дизайн',
@@ -346,38 +459,63 @@ export const translations = {
     portfolio: {
       title: 'Кейсы',
       subtitle: 'Реальные проекты и рабочие сценарии.',
-      was: 'Что было',
-      did: 'Что сделали',
+      clientTitle: 'Клиентские проекты',
+      readyTitle: 'Готовые решения',
+      readyIntro:
+        'Системы, которые мы спроектировали под типовые бизнесы. Их можно адаптировать и запустить под вашу компанию за несколько дней — вы видите готовый продукт до оплаты.',
+      conceptBadge: 'Концепт',
       result: 'Результат',
       open: 'Открыть',
       openSite: 'Открыть сайт',
       more: 'Все кейсы',
+      labels: {
+        client: { was: 'Что было', did: 'Что сделали' },
+        concept: { was: 'Задача', did: 'Решение' },
+      },
       cases: {
+        sokrat: {
+          draft: true,
+          group: 'client',
+          title: 'Сократ',
+          type: '[SOKRAT_TYPE]',
+          was: '[SOKRAT_BEFORE]',
+          did: '[SOKRAT_SOLUTION]',
+          result: '[SOKRAT_RESULT]',
+          tags: ['[SOKRAT_TAG]'],
+        },
         fd: {
+          group: 'client',
           title: 'FD Federation',
-          type: 'Портал игрового сообщества',
-          was: 'Информация, состав и навигация сообщества были разбросаны по разным местам.',
-          did: 'Собрали единый портал: разделы, ростер, статусы серверов и точки входа для участников.',
+          type: 'Система приёма заявок для сообщества',
+          was: 'Заявки на вступление прилетали в личные сообщения шести офицерам вразнобой. Никто не знал, кто уже ответил, часть обращений терялась, решения согласовывались хаотично.',
+          did: 'Сделали единую точку входа: форма заявки на сайте → все заявки автоматически падают в общий Telegram-чат офицеров. Каждый видит каждое обращение, решение принимается вместе за минуты.',
           result:
-            'Участники получили единую точку входа для материалов, структуры и внутренних процессов сообщества.',
-          tags: ['Портал', 'Навигация', 'Ростер', 'Разделы'],
+            'Ни одна заявка не теряется: все обращения в одном месте, а решения принимаются быстро и сообща.',
+          tags: [
+            'Приём заявок',
+            'Единая точка входа',
+            'Telegram-интеграция',
+            'Командная работа',
+          ],
         },
         atelier: {
+          group: 'concept',
           title: 'Atelier Restauro',
           type: 'Сайт реставрационной мастерской',
-          was: 'Клиентам было сложно быстро понять услуги и связаться с мастером.',
+          was: 'Типовая проблема мастерских: клиенту сложно быстро понять услуги, цены и записаться без звонков.',
           did: 'Создали сайт с понятной структурой, примерами работ и удобным сценарием обращения.',
           result:
-            'Клиент может за 1–2 минуты понять услуги и оставить заявку без лишних звонков и переписок.',
+            'Посетитель за 1–2 минуты понимает услуги и оставляет заявку без звонков и переписок.',
           tags: ['Сайт услуг', 'Примеры работ', 'Контакт', 'Локальный бизнес'],
         },
         kompleks: {
+          group: 'concept',
           title: 'Комплекс 555',
           type: 'Сайт придорожного кафе и гостиницы',
-          was: 'Придорожному кафе и гостинице нужно показать формат и принимать заказы и брони, не теряя обращений.',
+          was: 'Типовая проблема придорожного бизнеса: показать формат и принимать заказы и брони из одного места, не теряя обращений.',
           did: 'Собрали сайт: кафе с предзаказом меню, гостиница, контакты и быстрый звонок.',
           result:
-            'Гости могут изучить формат, заказать еду заранее и забронировать номер в одном месте.',
+            'Гость изучает формат, заказывает еду заранее и бронирует номер в одном месте.',
           tags: ['Кафе', 'Гостиница', 'Предзаказ', 'Бронирование'],
         },
       },
