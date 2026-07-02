@@ -1,28 +1,37 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const GA_ID = import.meta.env.VITE_GA_ID
-const YM_ID = import.meta.env.VITE_YM_ID
+const GTM_BASE = 'https://www.googletagmanager.com/gtag/js'
+const METRIKA_SRC = 'https://mc.yandex.ru/metrika/tag.js'
 
-function initGA() {
-  if (!GA_ID || window.gtag) return
-
-  const script = document.createElement('script')
-  script.async = true
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
-  document.head.appendChild(script)
-
-  window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag() {
-    window.dataLayer.push(arguments)
+function getAnalyticsIds() {
+  return {
+    gaId: String(import.meta.env.VITE_GA_ID ?? '').trim(),
+    ymId: String(import.meta.env.VITE_YM_ID ?? '').trim(),
   }
-  window.gtag('js', new Date())
-  window.gtag('config', GA_ID, { send_page_view: false })
 }
 
-function initYM() {
-  if (!YM_ID || window.ym) return
+function loadScript(src) {
+  if (document.querySelector(`script[src="${src}"]`)) return
+  const script = document.createElement('script')
+  script.async = true
+  script.src = src
+  document.head.appendChild(script)
+}
 
+function initGA(gaId) {
+  loadScript(`${GTM_BASE}?id=${gaId}`)
+  window.dataLayer = window.dataLayer || []
+  window.gtag =
+    window.gtag ||
+    function gtag() {
+      window.dataLayer.push(arguments)
+    }
+  window.gtag('js', new Date())
+  window.gtag('config', gaId, { send_page_view: false })
+}
+
+function initYM(ymId) {
   window.ym =
     window.ym ||
     function ym(...args) {
@@ -30,39 +39,37 @@ function initYM() {
     }
   window.ym.l = Date.now()
 
-  const script = document.createElement('script')
-  script.async = true
-  script.src = 'https://mc.yandex.ru/metrika/tag.js'
-  document.head.appendChild(script)
+  loadScript(METRIKA_SRC)
 
-  window.ym(Number(YM_ID), 'init', {
+  window.ym(Number(ymId), 'init', {
     clickmap: true,
     trackLinks: true,
     accurateTrackBounce: true,
     webvisor: true,
+    defer: true,
   })
 }
 
 export default function Analytics() {
   const location = useLocation()
-  const inited = useRef(false)
 
   useEffect(() => {
-    if (inited.current) return
-    initGA()
-    initYM()
-    inited.current = true
+    const { gaId, ymId } = getAnalyticsIds()
+    if (gaId) initGA(gaId)
+    if (ymId) initYM(ymId)
   }, [])
 
   useEffect(() => {
+    const { gaId, ymId } = getAnalyticsIds()
     const path = location.pathname + location.search
+    const url = window.location.href
 
-    if (GA_ID && window.gtag) {
-      window.gtag('config', GA_ID, { page_path: path })
+    if (gaId && window.gtag) {
+      window.gtag('config', gaId, { page_path: path })
     }
 
-    if (YM_ID && window.ym) {
-      window.ym(Number(YM_ID), 'hit', path)
+    if (ymId && window.ym) {
+      window.ym(Number(ymId), 'hit', url, { title: document.title })
     }
   }, [location])
 
