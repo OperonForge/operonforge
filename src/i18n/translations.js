@@ -203,12 +203,18 @@ export const translations = {
         sokrat: {
           draft: true,
           group: 'client',
-          title: 'Sokrat',
-          type: '[SOKRAT_TYPE]',
-          was: '[SOKRAT_BEFORE]',
-          did: '[SOKRAT_SOLUTION]',
-          result: '[SOKRAT_RESULT]',
-          tags: ['[SOKRAT_TAG]'],
+          title: 'Socrat',
+          type: 'Request system for gaming services',
+          was: 'Orders came through five different channels: Telegram, Boosty, WhatsApp, Discord and in-game chat. Every request had to be spotted, its status kept in the owner\'s head, and nobody forgotten. Some requests were simply lost along the way.',
+          did: 'We built a system around three request types: account setup, in-game currency purchase, and account purchases from a showcase. Every request lands automatically in Telegram, sorted into its own section. The client receives a unique code and tracks the order status on the site — like a parcel tracking number. The stream queue fills automatically. Through the admin panel, the owner manages everything himself: products, prices, requests, site content — no developer needed.',
+          result:
+            "Five channels became one stream. No request gets lost, and clients track orders by code instead of 'any updates?' messages.",
+          tags: [
+            'Request intake',
+            'Order tracking by code',
+            'Admin panel',
+            'Telegram integration',
+          ],
         },
         fd: {
           group: 'client',
@@ -489,11 +495,17 @@ export const translations = {
           draft: true,
           group: 'client',
           title: 'Сократ',
-          type: '[SOKRAT_TYPE]',
-          was: '[SOKRAT_BEFORE]',
-          did: '[SOKRAT_SOLUTION]',
-          result: '[SOKRAT_RESULT]',
-          tags: ['[SOKRAT_TAG]'],
+          type: 'Система заявок для игровых услуг',
+          was: 'Заказы приходили в пять разных мест: Telegram, Boosty, WhatsApp, Discord и чат внутри игры. Каждое обращение нужно было заметить, удержать в голове статус и никого не потерять. Часть заявок терялась по дороге.',
+          did: 'Построили систему на три типа заявок: настройка аккаунтов, покупка игровой валюты, покупка аккаунтов с витрины. Каждая заявка автоматически прилетает в Telegram в свой раздел. Клиент получает уникальный код и сам отслеживает статус заказа на сайте — как трек-номер посылки. Очередь на стрим собирается автоматически. Через админ-панель владелец управляет всем сам: товары, цены, заявки, тексты сайта — без разработчика.',
+          result:
+            'Пять каналов превратились в один поток. Ни одна заявка не теряется, клиент следит за заказом по коду вместо «ну что там с моим?» в личке.',
+          tags: [
+            'Приём заявок',
+            'Отслеживание по коду',
+            'Админ-панель',
+            'Telegram-интеграция',
+          ],
         },
         fd: {
           group: 'client',

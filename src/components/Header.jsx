@@ -50,8 +50,8 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-bg/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.5)]'
+        open || scrolled
+          ? 'bg-bg shadow-[0_4px_24px_rgba(0,0,0,0.5)]'
           : 'bg-transparent'
       }`}
     >
@@ -96,8 +96,8 @@ export default function Header() {
       </div>
 
       {open && !isDesktop && (
-        <div className="fixed inset-0 top-[4.25rem] md:top-[5rem] bg-bg/98 backdrop-blur-xl z-40">
-          <nav className="flex flex-col p-6 gap-1">
+        <div className="fixed inset-0 top-[4.25rem] md:top-[5rem] z-40 bg-bg border-t border-white/10">
+          <nav className="flex flex-col p-6 gap-1 overflow-y-auto max-h-[calc(100dvh-4.25rem)] md:max-h-[calc(100dvh-5rem)]">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}

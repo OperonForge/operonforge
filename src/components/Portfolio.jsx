@@ -8,6 +8,7 @@ import imgAtelier from '../assets/case-atelier-restauro.webp'
 import imgCafe from '../assets/case-cafe555.webp'
 
 const caseAssets = {
+  sokrat: { link: 'https://socrat-warpath.ru' },
   fd: { image: imgFdPortal, link: 'https://fd-federation.netlify.app/server150.html' },
   atelier: { image: imgAtelier, link: 'https://atelier-restauro.netlify.app/' },
   kompleks: { image: imgCafe, link: 'https://kompleks-555.netlify.app/' },
