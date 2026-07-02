@@ -12,6 +12,17 @@ function setMeta(name, content) {
   el.setAttribute('content', content)
 }
 
+function setPropertyMeta(property, content) {
+  if (!content) return
+  let el = document.head.querySelector(`meta[property="${property}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute('property', property)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', content)
+}
+
 export default function Seo({ pageKey }) {
   const { t, lang } = useLang()
 
@@ -20,6 +31,10 @@ export default function Seo({ pageKey }) {
     if (!meta) return
     document.title = meta.title
     setMeta('description', meta.description)
+    if (pageKey === 'home') {
+      setPropertyMeta('og:description', meta.description)
+      setMeta('twitter:description', meta.description)
+    }
   }, [t, lang, pageKey])
 
   return null

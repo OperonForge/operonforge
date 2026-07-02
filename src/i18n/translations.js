@@ -7,7 +7,7 @@ export const translations = {
       home: {
         title: 'OperonForge — digital systems for business',
         description:
-          'We turn business chaos into a working system: websites, lead management systems, Telegram integrations and process automation.',
+          'Requests get lost in chats and spreadsheets? We bring everything into one system: website, lead intake, notifications. Nothing slips away.',
       },
       services: {
         title: 'Services — OperonForge | Digital systems for business',
@@ -291,7 +291,7 @@ export const translations = {
       home: {
         title: 'OperonForge — цифровые системы для бизнеса',
         description:
-          'Превращаем хаос в бизнесе в работающую систему: сайты, системы обработки заявок, Telegram-интеграции и автоматизация процессов.',
+          'Заявки теряются в переписках и табличках? Собираем всё в одну систему: сайт, приём заявок, уведомления. Ничего не ускользает.',
       },
       services: {
         title: 'Услуги — OperonForge | Цифровые системы для бизнеса',
