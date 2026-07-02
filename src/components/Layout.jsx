@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import Analytics from './Analytics'
 import heroBg from '../assets/hero-system-bg.webp'
 
 function ScrollToTop() {
@@ -28,6 +29,7 @@ export default function Layout() {
   return (
     <div id="top" className="relative min-h-screen text-text">
       <ScrollToTop />
+      <Analytics />
 
       <div
         className="page-background"

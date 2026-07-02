@@ -4,11 +4,25 @@ import { LanguageContext } from './LanguageContext'
 
 const STORAGE_KEY = 'operonforge-lang'
 const DEFAULT_LANG = 'en'
+const CIS_LANG_PREFIXES = ['ru', 'be', 'uk']
+
+function detectBrowserLang() {
+  const langs = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language || '']
+
+  for (const raw of langs) {
+    const code = raw.toLowerCase().split('-')[0]
+    if (CIS_LANG_PREFIXES.includes(code)) return 'ru'
+  }
+  return DEFAULT_LANG
+}
 
 function getInitialLang() {
   if (typeof window === 'undefined') return DEFAULT_LANG
   const saved = window.localStorage.getItem(STORAGE_KEY)
-  return saved === 'ru' || saved === 'en' ? saved : DEFAULT_LANG
+  if (saved === 'ru' || saved === 'en') return saved
+  return detectBrowserLang()
 }
 
 export function LanguageProvider({ children }) {
