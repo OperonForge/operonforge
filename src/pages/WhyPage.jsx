@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader'
 import WhyUs from '../components/WhyUs'
 import AnimatedSection from '../components/AnimatedSection'
@@ -6,6 +7,7 @@ import { useLang } from '../i18n/LanguageContext'
 
 export default function WhyPage() {
   const { t } = useLang()
+
   return (
     <>
       <Seo pageKey="why" />
@@ -16,12 +18,28 @@ export default function WhyPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
             {t.why.aboutTitle}
           </h2>
+
           <div className="space-y-4">
-            {t.why.about.map((paragraph, i) => (
-              <p key={i} className="text-base md:text-lg text-text-secondary leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+              {t.why.aboutIntro}
+            </p>
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+              {t.why.aboutFounder}
+            </p>
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+              {t.why.aboutProcess}
+            </p>
+
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed">
+              {t.why.aboutCases.before}
+              <Link
+                to="/portfolio"
+                className="text-primary-light hover:text-white font-medium transition-colors"
+              >
+                {t.nav.cases.toLowerCase()}
+              </Link>
+              {t.why.aboutCases.after}
+            </p>
           </div>
         </div>
       </AnimatedSection>

@@ -125,12 +125,18 @@ export const translations = {
       title: 'Why companies choose OperonForge',
       subtitle: 'We study how the business works, not just draw pages.',
       pageTitle: 'About us',
-      pageSubtitle: 'A small studio that brings order to business processes.',
+      pageSubtitle: 'We bring order to business processes.',
       aboutTitle: 'Who we are',
-      about: [
-        'OperonForge is a small studio that helps businesses bring order to their digital processes. We build not just websites, but working systems: lead intake, automation and tools that save the owner time.',
-        'We start with how your business actually works, not with pictures. First we understand the process, then we design a solution — one that is convenient for both you and your clients.',
-      ],
+      aboutIntro:
+        "OperonForge is a digital systems studio. We don't just build websites — we build workflows that actually run: request form → notifications → tracking → nothing gets lost. Our goal is for the owner to stop keeping the business in their head and in scattered chats.",
+      aboutFounder:
+        "My name is Dmitrij, I'm the founder of OperonForge. I run every project myself — from analyzing your process to launching the system — so you always talk to the person who knows your project from the inside, not someone relaying second-hand information.",
+      aboutProcess:
+        "We start with how your business works, not with visuals. First we map the process — where requests come in, where they get lost, what the owner still does by hand. Then we design a solution that's convenient for both you and your customers.",
+      aboutCases: {
+        before: 'Take a look at our ',
+        after: " — you'll see how this works on real projects.",
+      },
       thinkTitle: 'How we think',
       items: [
         {
@@ -404,12 +410,18 @@ export const translations = {
       title: 'Почему компании выбирают OperonForge',
       subtitle: 'Мы изучаем, как работает бизнес, а не просто рисуем страницы.',
       pageTitle: 'О нас',
-      pageSubtitle: 'Небольшая студия, которая наводит порядок в процессах бизнеса.',
+      pageSubtitle: 'Наводим порядок в процессах бизнеса.',
       aboutTitle: 'Кто мы',
-      about: [
-        'OperonForge — небольшая студия, которая помогает бизнесу навести порядок в цифровых процессах. Мы делаем не просто сайты, а работающие системы: приём заявок, автоматизацию и инструменты, которые экономят время владельца.',
-        'Мы начинаем с того, как устроен ваш бизнес, а не с картинок. Сначала разбираем процесс, потом проектируем решение — так, чтобы им было удобно пользоваться и вам, и вашим клиентам.',
-      ],
+      aboutIntro:
+        'OperonForge — студия цифровых систем. Мы делаем не просто сайты, а связки, которые работают: форма заявок → уведомления → учёт → ничего не теряется. Наша задача — чтобы владелец перестал держать бизнес в голове и переписках.',
+      aboutFounder:
+        'Меня зовут Дмитрий, я основатель OperonForge. Каждый проект я веду сам, от разбора вашего процесса до запуска системы, поэтому вы всегда говорите с человеком, который знает ваш проект изнутри, а не пересказывает чужие слова.',
+      aboutProcess:
+        'Мы начинаем с того, как устроен ваш бизнес, а не с картинок. Сначала разбираем процесс — куда приходят заявки, где они теряются, что владелец делает руками. Потом проектируем решение, которым удобно пользоваться и вам, и вашим клиентам.',
+      aboutCases: {
+        before: 'Посмотрите ',
+        after: ' — там видно, как это работает на реальных проектах.',
+      },
       thinkTitle: 'Как мы думаем',
       items: [
         {
