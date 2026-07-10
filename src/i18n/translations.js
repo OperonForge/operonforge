@@ -207,7 +207,7 @@ export const translations = {
           was: 'Orders came through five different channels: Telegram, Boosty, WhatsApp, Discord and in-game chat. Every request had to be spotted, its status kept in the owner\'s head, and nobody forgotten. Some requests were simply lost along the way.',
           did: 'We built a system around three request types: account setup, in-game currency purchase, and account purchases from a showcase. Every request lands automatically in Telegram, sorted into its own section. The client receives a unique code and tracks the order status on the site — like a parcel tracking number. The stream queue fills automatically. Through the admin panel, the owner manages everything himself: products, prices, requests, site content — no developer needed.',
           result:
-            "Five channels became one stream. No request gets lost, and clients track orders by code instead of 'any updates?' messages.",
+            'First week after launch: 660 unique visitors, 4,500+ page views and 50 completed requests. Five channels became one stream — requests come in even at night, and none get lost. Clients track orders by code instead of sending "any updates?" messages.',
           tags: [
             'Request intake',
             'Order tracking by code',
@@ -222,7 +222,7 @@ export const translations = {
           was: 'Join requests were scattered across the personal DMs of six officers. Nobody knew who had already replied, some requests were lost, and decisions were coordinated chaotically.',
           did: "We built a single entry point: an application form on the site → every request lands automatically in a shared officers' Telegram chat. Everyone sees every application; decisions are made together within minutes.",
           result:
-            'No request gets lost — every application lives in one place, and decisions are made quickly and together.',
+            "35 requests per month. They used to land scattered across six officers' DMs — now they arrive in one shared chat where everyone sees them. Not a single one gets lost.",
           tags: [
             'Request intake',
             'Single entry point',
@@ -497,7 +497,7 @@ export const translations = {
           was: 'Заказы приходили в пять разных мест: Telegram, Boosty, WhatsApp, Discord и чат внутри игры. Каждое обращение нужно было заметить, удержать в голове статус и никого не потерять. Часть заявок терялась по дороге.',
           did: 'Построили систему на три типа заявок: настройка аккаунтов, покупка игровой валюты, покупка аккаунтов с витрины. Каждая заявка автоматически прилетает в Telegram в свой раздел. Клиент получает уникальный код и сам отслеживает статус заказа на сайте — как трек-номер посылки. Очередь на стрим собирается автоматически. Через админ-панель владелец управляет всем сам: товары, цены, заявки, тексты сайта — без разработчика.',
           result:
-            'Пять каналов превратились в один поток. Ни одна заявка не теряется, клиент следит за заказом по коду вместо «ну что там с моим?» в личке.',
+            'За первую неделю работы: 660 уникальных посетителей, 4 500+ просмотров и 50 выполненных заявок. Пять каналов превратились в один поток — заявки приходят даже ночью, и ни одна не теряется. Клиент следит за заказом по коду вместо «ну что там с моим?» в личке.',
           tags: [
             'Приём заявок',
             'Отслеживание по коду',
@@ -512,7 +512,7 @@ export const translations = {
           was: 'Заявки на вступление прилетали в личные сообщения шести офицерам вразнобой. Никто не знал, кто уже ответил, часть обращений терялась, решения согласовывались хаотично.',
           did: 'Сделали единую точку входа: форма заявки на сайте → все заявки автоматически падают в общий Telegram-чат офицеров. Каждый видит каждое обращение, решение принимается вместе за минуты.',
           result:
-            'Ни одна заявка не теряется: все обращения в одном месте, а решения принимаются быстро и сообща.',
+            '35 заявок за месяц. Раньше они падали в личку шести офицерам вразнобой — теперь приходят в один чат, где их видят все. Ни одна не теряется.',
           tags: [
             'Приём заявок',
             'Единая точка входа',
