@@ -201,7 +201,6 @@ export const translations = {
       },
       cases: {
         sokrat: {
-          draft: true,
           group: 'client',
           title: 'Socrat',
           type: 'Request system for gaming services',
@@ -492,7 +491,6 @@ export const translations = {
       },
       cases: {
         sokrat: {
-          draft: true,
           group: 'client',
           title: 'Сократ',
           type: 'Система заявок для игровых услуг',

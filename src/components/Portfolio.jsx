@@ -3,12 +3,13 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedSection, { SectionHeading } from './AnimatedSection'
 import { useLang } from '../i18n/LanguageContext'
+import imgSokrat from '../assets/case-sokrat.webp'
 import imgFdPortal from '../assets/case-fd-portal.webp'
 import imgAtelier from '../assets/case-atelier-restauro.webp'
 import imgCafe from '../assets/case-cafe555.webp'
 
 const caseAssets = {
-  sokrat: { link: 'https://socrat-warpath.ru' },
+  sokrat: { image: imgSokrat, link: 'https://socrat-warpath.ru' },
   fd: { image: imgFdPortal, link: 'https://fd-federation.netlify.app/server150.html' },
   atelier: { image: imgAtelier, link: 'https://atelier-restauro.netlify.app/' },
   kompleks: { image: imgCafe, link: 'https://kompleks-555.netlify.app/' },
