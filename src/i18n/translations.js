@@ -242,12 +242,12 @@ export const translations = {
         },
         kompleks: {
           group: 'concept',
-          title: 'Kompleks 555',
+          title: 'Roadside Yard',
           type: 'Roadside café & hotel website',
-          was: 'A common problem for roadside businesses: present the format and take orders and bookings from one place without losing requests.',
-          did: 'We built the site: café with menu pre-orders, hotel, contacts and a quick call.',
+          was: 'A common problem for roadside businesses: guests need to quickly understand the format and order food or book a room without phone calls.',
+          did: 'We built the site for Pridorozhny Dvor: pre-order food, book a room, contacts and a quick call — all from one page.',
           result:
-            'A guest explores the format, pre-orders food and books a room in one place.',
+            'A traveler sees the format at a glance, pre-orders food and books a room in one place.',
           tags: ['Café', 'Hotel', 'Pre-order', 'Booking'],
         },
       },
@@ -532,12 +532,12 @@ export const translations = {
         },
         kompleks: {
           group: 'concept',
-          title: 'Комплекс 555',
+          title: 'Придорожный двор',
           type: 'Сайт придорожного кафе и гостиницы',
-          was: 'Типовая проблема придорожного бизнеса: показать формат и принимать заказы и брони из одного места, не теряя обращений.',
-          did: 'Собрали сайт: кафе с предзаказом меню, гостиница, контакты и быстрый звонок.',
+          was: 'Типовая проблема придорожного бизнеса: гостю нужно быстро понять формат и заказать еду или забронировать номер без звонков.',
+          did: 'Собрали сайт «Придорожный двор»: предзаказ еды, бронирование номера, контакты и быстрый звонок — всё с одной страницы.',
           result:
-            'Гость изучает формат, заказывает еду заранее и бронирует номер в одном месте.',
+            'Путник за пару минут понимает формат, заказывает еду заранее и бронирует номер в одном месте.',
           tags: ['Кафе', 'Гостиница', 'Предзаказ', 'Бронирование'],
         },
       },
