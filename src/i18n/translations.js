@@ -257,8 +257,8 @@ export const translations = {
       subtitle:
         "Let's discuss your task and propose a solution that genuinely helps your business.",
       emailSub: 'Email — to get in touch',
-      tgTitle: 't.me/operonforge',
-      tgSub: 'Official OperonForge channel',
+      tgTitle: '@operonforge_contact',
+      tgSub: 'Telegram — write to us directly',
       form: {
         name: 'Name',
         namePh: 'Your name',
@@ -278,7 +278,7 @@ export const translations = {
       slogan: 'Scattered processes → one working system.',
       navTitle: 'Navigation',
       contactsTitle: 'Contacts',
-      telegram: 'Telegram channel',
+      telegram: '@operonforge_contact',
       copyright: '© 2026 OperonForge. Digital systems & automation.',
     },
     notFound: {
@@ -547,8 +547,8 @@ export const translations = {
       subtitle:
         'Обсудим вашу задачу и предложим решение, которое действительно поможет вашему бизнесу.',
       emailSub: 'Email — для связи',
-      tgTitle: 't.me/operonforge',
-      tgSub: 'Официальный канал OperonForge',
+      tgTitle: '@operonforge_contact',
+      tgSub: 'Telegram — написать напрямую',
       form: {
         name: 'Имя',
         namePh: 'Как к вам обращаться',
@@ -568,7 +568,7 @@ export const translations = {
       slogan: 'Разрозненные процессы → единая работающая система.',
       navTitle: 'Навигация',
       contactsTitle: 'Контакты',
-      telegram: 'Telegram-канал',
+      telegram: '@operonforge_contact',
       copyright: '© 2026 OperonForge. Digital systems & automation.',
     },
     notFound: {

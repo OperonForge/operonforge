@@ -4,7 +4,7 @@ import logoSymbol from '../assets/logo-symbol-trimmed.png'
 import { useLang } from '../i18n/LanguageContext'
 
 const socials = [
-  { href: 'https://t.me/operonforge', key: 'telegram' },
+  { href: 'https://t.me/operonforge_contact', key: 'telegram' },
   { href: 'mailto:operonforge@gmail.com', label: 'operonforge@gmail.com' },
 ]
 
@@ -61,7 +61,16 @@ export default function Footer() {
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="text-sm text-text-secondary hover:text-primary-light transition-colors"
                   >
-                    {link.key ? t.footer[link.key] : link.label}
+                    {link.key === 'telegram' ? (
+                      <>
+                        <span className="text-primary-light">@</span>
+                        operonforge_contact
+                      </>
+                    ) : link.key ? (
+                      t.footer[link.key]
+                    ) : (
+                      link.label
+                    )}
                   </a>
                 </li>
               ))}

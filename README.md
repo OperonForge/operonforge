@@ -48,7 +48,7 @@ src/
 
 Замените placeholder-ссылки в `CTA.jsx` и `Footer.jsx`:
 
-- Telegram: `https://t.me/operonforge`
-- Email: `hello@operonforge.com`
+- Telegram: `https://t.me/operonforge_contact`
+- Email: `operonforge@gmail.com`
 
 Форма заявки отправляет через `mailto:` — позже можно подключить Supabase или Telegram Bot API.

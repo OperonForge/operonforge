@@ -3,7 +3,8 @@ import { Send, Mail, MessageCircle } from 'lucide-react'
 import AnimatedSection from './AnimatedSection'
 import { useLang } from '../i18n/LanguageContext'
 
-const TELEGRAM_LINK = 'https://t.me/operonforge'
+const TELEGRAM_HANDLE = 'operonforge_contact'
+const TELEGRAM_LINK = `https://t.me/${TELEGRAM_HANDLE}`
 const EMAIL = 'operonforge@gmail.com'
 
 export default function CTA() {
@@ -57,14 +58,22 @@ export default function CTA() {
                 href={TELEGRAM_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl bg-surface/80 backdrop-blur-sm border border-white/[0.08] p-4 hover:border-primary/40 transition-colors"
+                className="group flex items-center gap-3 rounded-xl bg-surface/80 backdrop-blur-sm border border-white/[0.08] p-4 hover:border-primary/40 transition-colors"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15 border border-primary/30">
                   <MessageCircle size={18} className="text-primary-light" />
                 </span>
-                <span>
-                  <span className="block text-sm font-semibold text-white">{t.cta.tgTitle}</span>
-                  <span className="block text-xs text-text-muted">{t.cta.tgSub}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold tracking-tight">
+                    <span className="text-primary-light">@</span>
+                    <span className="text-white group-hover:text-primary-light transition-colors">
+                      {TELEGRAM_HANDLE}
+                    </span>
+                  </span>
+                  <span className="block text-xs text-text-muted mt-0.5">{t.cta.tgSub}</span>
+                </span>
+                <span className="hidden sm:inline-flex shrink-0 items-center rounded-md border border-primary/25 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-primary-light">
+                  Telegram
                 </span>
               </a>
             </div>
